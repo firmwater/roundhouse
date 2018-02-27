@@ -5,6 +5,7 @@ namespace roundhouse.folders
         public DefaultKnownFolders(
                                    MigrationsFolder alter_database,
                                    MigrationsFolder run_after_create_database,
+								   MigrationsFolder run_before_up,
                                    MigrationsFolder up,
                                    MigrationsFolder down,
                                    MigrationsFolder run_first_after_up,
@@ -14,11 +15,14 @@ namespace roundhouse.folders
                                    MigrationsFolder indexes,
                                    MigrationsFolder runAfterOtherAnyTimeScripts,        
                                    MigrationsFolder permissions,
+                                   MigrationsFolder before_migration,
+                                   MigrationsFolder after_migration,
                                    Folder change_drop
             )
         {
             this.alter_database = alter_database;
             this.run_after_create_database = run_after_create_database;
+			this.run_before_up = run_before_up;
             this.up = up;
             this.down = down;
             this.run_first_after_up = run_first_after_up;
@@ -29,10 +33,13 @@ namespace roundhouse.folders
             this.run_after_other_any_time_scripts = runAfterOtherAnyTimeScripts;
             this.permissions = permissions;
             this.change_drop = change_drop;
+            this.before_migration = before_migration;
+            this.after_migration = after_migration;
         }
 
         public MigrationsFolder alter_database { get; private set; }
         public MigrationsFolder run_after_create_database { get; private set; }
+		public MigrationsFolder run_before_up { get; private set; }
         public MigrationsFolder up { get; private set; }
         public MigrationsFolder down { get; private set; }
         public MigrationsFolder run_first_after_up { get; private set; }
@@ -42,7 +49,9 @@ namespace roundhouse.folders
         public MigrationsFolder indexes { get; private set; }
         public MigrationsFolder run_after_other_any_time_scripts { get; private set; }
         public MigrationsFolder permissions { get; private set; }
-        
+        public MigrationsFolder before_migration { get; private set; }
+        public MigrationsFolder after_migration { get; private set; }
+
         public Folder change_drop{get; private set;}
        
     }
